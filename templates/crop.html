@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ernte - To Harvest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}"> -->
+    <link rel="stylesheet" type="text/css" href="/static/styles/style.css" media="screen">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- <script src="{{url_for('static', filename='js/cp.js')}}"></script> -->
+    <script src="/static/js/cp.js"></script>
+
+    <script src="/static/js/confetti.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="/static/images/crop.webp">
+
+</head>
+
+
+<body>
+
+    <div class="container">
+        <!-- <a href="/" style="font-size: 25px; color:rgb(16, 121, 33);">HOME</a> -->
+        <h1 style="color:bisque; -webkit-text-stroke-width: 1px; text-shadow: 0 0 3px #FF0000, 0 0 5px #cf0000;">Enter
+            the details</h1>
+        <!-- <form action="{{ url_for('main') }}" method="post" style="text-align: center;"> -->
+        <form action="/main" method="get" style="text-align: center;">
+            <!-- <div class="row"> -->
+            <!-- <div class="col-sm-6"> -->
+            <center>
+                <div class="form-group">
+                    <label for="c1"
+                        style="color:beige; font-size: 25px; -webkit-text-stroke-width: 1px; text-shadow: 0 0 3px rgb(3, 57, 3), 0 0 5px rgb(3, 89, 20);">Nitrogen</label>
+                    <input type="number" step="any" name="nitrogen" , placeholder="0 to 140 in kg" required />
+                </div>
+                <div class="form-group">
+                    <label for="c1"
+                        style="color:beige; font-size: 25px; -webkit-text-stroke-width: 1px; text-shadow: 0 0 3px rgb(3, 57, 3), 0 0 5px rgb(3, 89, 20);">Phosphorus</label>
+                    <input type="number" step="any" name="phosphorous" , placeholder="5 to 145 in kg" required />
+                </div>
+                <div class="form-group">
+                    <label for="c1"
+                        style="color:beige; font-size: 25px; -webkit-text-stroke-width: 1px; text-shadow: 0 0 3px rgb(3, 57, 3), 0 0 5px rgb(3, 89, 20);">Potassium</label>
+                    <input type="number" step="any" name="pottassium" , placeholder="5 to 205 in kg" required />
+                </div>
+
+
+                <div class="form-group">
+                    <label for="c1"
+                        style="color:beige; font-size: 25px; -webkit-text-stroke-width: 1px; text-shadow: 0 0 3px rgb(3, 57, 3), 0 0 5px rgb(3, 89, 20);">Humidity</label>
+                    <input type="number" step="any" name="humdity" , placeholder="14 to 100" required />
+                </div>
+                <div class="form-group">
+                    <label for="c1"
+                        style="color:beige; font-size: 25px; -webkit-text-stroke-width: 1px; text-shadow: 0 0 3px rgb(3, 57, 3), 0 0 5px rgb(3, 89, 20);">Temperature</label>
+                    <input type="number" step="any" name="tempearture" , placeholder="9 to 43 in °C" required />
+                </div>
+
+                <button class="btn" id="open-popup-btn">
+                    Submit
+                </button>
+            </center>
+            <!-- </div> -->
+            <!-- </div> -->
+        </form>
+    </div>
+
+
+
+    <script>
+        let li = '{{ da }}'
+
+        const myArray = li.split(",");
+
+
+
+        // const obj = JSON.parse(li);
+
+        // let nit=obj.nitrogen;
+        // let pho=obj.phosphorus;
+        // let pot=obj.potassium;
+        // let cro=obj.crop;
+
+
+        console.log(myArray)
+
+        console.log(typeof myArray)
+
+
+        let element = myArray[3]
+        let el = element.fontcolor("green");
+        // let el=ele.bold();
+
+        // function captureConsoleLog() {
+        //     let logs = [];
+        //     const originalLog = console.log;
+        //     console.log = (...args) => {
+        //         originalLog(...args);
+        //         logs.push(args.map(arg => JSON.stringify(arg)).join(' '));
+        //     }
+        //     return () => logs.join('\n');
+        // }
+
+        // const logOutput = captureConsoleLog();
+        // console.log(element + "\n\nAdd " + myArray[0] + "g Nitrogen" + "\nAdd " + myArray[1] + "g Phosphorus" + "\nAdd " + myArray[2] + "g Potassium");
+        // const capturedLogs = logOutput();
+        // console.log(capturedLogs);
+
+
+        let lis = el
+
+        var i = 0;
+
+        var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+        function typeWriter() {
+            if (i < lis.length) {
+                document.getElementById("swal2-title").innerHTML += lis.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+
+        if (li != '') {
+            Swal.fire(el+"\n\n"+"Add " + myArray[0] + "g Nitrogen\n"  + "Add " + myArray[1] + "g Phosphorus\n" + "Add " + myArray[2] + "g Potassium")
+            
+            start()
+            stop()
+        }
+    </script>
+
+
+</body>
+
+</html>
