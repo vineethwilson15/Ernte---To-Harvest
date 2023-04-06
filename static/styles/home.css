@@ -1,0 +1,46 @@
+html,body { 
+    background: url('/static/images/home.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+
+.btn {
+    bottom: 10%;
+    margin-left: 50%;
+    position: absolute;
+    animation: normal;
+    animation-name: run;
+    animation-duration: 3s;
+    background-color: white;
+    color: black !important;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Arial';
+    font-size: 25px !important;
+}
+
+.btn:hover {
+    background-color: #e0e7dc;
+}
+  
+  @keyframes run {
+    0% {
+      right: 0%;
+    }
+    100% {
+      right: 42%;
+    }
+  }
+
+.img {
+    width: 80px;
+    height: 60px;
+}
